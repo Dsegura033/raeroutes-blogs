@@ -647,21 +647,30 @@ March City Spotlight: Dublin in March ☘️
 </footer>
 
 <script>
-// Collapsible toggle
-const collapsibles = document.querySelectorAll(".collapsible-btn");
-
-collapsibles.forEach(btn => {
+document.querySelectorAll(".collapsible-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    btn.classList.toggle("active");
 
     const content = btn.nextElementSibling;
 
+    // Close other sections (optional but cleaner UX)
+    document.querySelectorAll(".collapsible-content").forEach(section => {
+      if (section !== content) {
+        section.style.display = "none";
+      }
+    });
+
+    // Toggle clicked section
     if (content.style.display === "block") {
       content.style.display = "none";
     } else {
       content.style.display = "block";
     }
   });
+});
+
+// Start with sections closed (fixes your visibility bug)
+document.querySelectorAll(".collapsible-content").forEach(section => {
+  section.style.display = "none";
 });
 </script>
 </body>
