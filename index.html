@@ -281,7 +281,7 @@ li {
 }
 
 .collapsible-content {
-  display: none;
+  display: block;
   overflow: hidden;
   animation: fadeIn 0.5s ease-in;
 }
@@ -640,20 +640,24 @@ li {
 </footer>
 
 <script>
-// Collapsible toggle
-const collapsibles = document.querySelectorAll(".collapsible-btn");
-collapsibles.forEach(btn => {
+document.querySelectorAll(".collapsible-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    btn.classList.toggle("active");
+
     const content = btn.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
+    if (!content) return;
+
+    // Toggle active class
+    btn.classList.toggle("active");
+
+    // Proper visibility toggle
+    if (window.getComputedStyle(content).display === "none") {
       content.style.display = "block";
+    } else {
+      content.style.display = "none";
     }
+
   });
 });
 </script>
-
 </body>
 </html>
