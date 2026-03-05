@@ -488,7 +488,6 @@ li {
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdq8u-9KDcxJB8W6SD767-BULTrboCWabuYxlY1uW5GBA3f-A/viewform?usp=header" target="_blank" class="button">
         Plan My Venice Experience
       </a>
-    </div>
     </div> <!-- END February collapsible-content -->
 
     <!-- ===== COLLAPSIBLE DUBLIN SPOTLIGHT ===== -->
@@ -640,22 +639,20 @@ li {
 </footer>
 
 <script>
-document.querySelectorAll(".collapsible-btn").forEach(btn => {
+// Collapsible toggle
+const collapsibles = document.querySelectorAll(".collapsible-btn");
+
+collapsibles.forEach(btn => {
   btn.addEventListener("click", () => {
-
-    const content = btn.nextElementSibling;
-    if (!content) return;
-
-    // Toggle active class
     btn.classList.toggle("active");
 
-    // Proper visibility toggle
-    if (window.getComputedStyle(content).display === "none") {
-      content.style.display = "block";
-    } else {
-      content.style.display = "none";
-    }
+    const content = btn.nextElementSibling;
 
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
   });
 });
 </script>
